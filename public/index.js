@@ -12,20 +12,30 @@ async function main(){
         countValue++;
         countContainer.textContent = countValue;
 
-        // fetch('http://localhost/counter', {
-        //     method: 'Patch',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         'value': 'countValue'
-        //     })
-        // })
+         fetch('http://127.0.0.1:9001/counter', {
+             method: 'POST',
+             headers: {
+                'Content-Type': 'application/json'
+             },
+             body: JSON.stringify({
+                'value': countValue
+             })
+         })
     }
 
     function decrement(){
         countValue--;
         countContainer.textContent = countValue;
+
+        fetch('http://127.0.0.1:9001/counter', {
+             method: 'POST',
+             headers: {
+                'Content-Type': 'application/json'
+             },
+             body: JSON.stringify({
+                'value': countValue
+             })
+         })
     }
 
     incrementButton.addEventListener('click', increment);
